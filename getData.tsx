@@ -33,7 +33,7 @@ const vinVpds = (args: string[]) => {
   }
 }
 
-const classes: any = {
+const objects: any = {
   vinTabsGeneral,
   vinAggregates,
   vinEquipmentCodes,
@@ -62,7 +62,7 @@ function getData(html: string){
             }
         })
         
-          elemsArray.push(classes[id](args));
+          elemsArray.push(objects[id](args));
         })
     finalArray.push({
       [id]:elemsArray
