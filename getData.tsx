@@ -33,7 +33,7 @@ const vinVpds = (args: string[]) => {
   }
 }
 
-const classes: any = {
+const objects: any = {
   vinTabsGeneral,
   vinAggregates,
   vinEquipmentCodes,
@@ -45,7 +45,7 @@ function getData(html: string){
     const dom = new JSDOM(html);
     const document = dom.window.document;
  
-    const finalArray: object[] = [];
+    let finalJson: string = "";
 
     Array.from(document.querySelectorAll("#vinTabs > div")).forEach(div =>{
 
@@ -62,13 +62,13 @@ function getData(html: string){
             }
         })
         
-          elemsArray.push(classes[id](args));
+          elemsArray.push(objects[id](args));
         })
-    finalArray.push({
-      [id]:elemsArray
-    })      
+    finalJson += JSON.stringify({
+            [id]:elemsArray
+          }, null, 2)
     })
-  return JSON.stringify(finalArray, null, 2);
+  return finalJson;
   } catch (error){
   console.log(error);
   }
