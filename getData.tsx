@@ -45,7 +45,7 @@ function getData(html: string){
     const dom = new JSDOM(html);
     const document = dom.window.document;
  
-    const finalArray: object[] = [];
+    let finalJson: string = "";
 
     Array.from(document.querySelectorAll("#vinTabs > div")).forEach(div =>{
 
@@ -64,11 +64,11 @@ function getData(html: string){
         
           elemsArray.push(objects[id](args));
         })
-    finalArray.push({
-      [id]:elemsArray
-    })      
+    finalJson += JSON.stringify({
+            [id]:elemsArray
+          }, null, 2)
     })
-  return JSON.stringify(finalArray, null, 2);
+  return finalJson;
   } catch (error){
   console.log(error);
   }
