@@ -16,7 +16,7 @@ function getData(html: string){
     const dom = new JSDOM(html);
     const document = dom.window.document;
     
-    let finalJson: any = {};
+   const finalJson = {};
 
     Array.from(document.querySelectorAll("#vinTabs > div")).forEach(div =>{
 
