@@ -41,15 +41,20 @@ function getData(html: string){
               args.push("");
             }
         })
+
         if(args[0]){
           if(keys.length){
             elemsArray.push(generateVinTabsObj(keys, args))
           }else{
-            elemsArray.push(generateVinTabsObj(["title", "data"], args.slice(0, 2)));
+            elemsArray.push(generateVinTabsObj(["title", "data"], args));
             if(args[2]){
-              elemsArray.push(generateVinTabsObj(["title", "data"], args.slice(2)));
+              switch (args.length){
+              case 3: elemsArray.push(generateVinTabsObj(["title", "data"], [args[0], `${args[1]} ${args[2]}` ]));
+              break;
+              case 4: elemsArray.push(generateVinTabsObj(["title", "data"], args.slice(2)));
+              break;
             }
-        
+            }
         }
       }
       })
