@@ -2,12 +2,13 @@ import { JSDOM } from 'jsdom'
 
 const generateVinTabsObj = (keys: string[], data: string[]) => {
     const obj: {[key: string]:  string} = {};
-    for (let index = 0; index < keys.length; index++) {
-      if(data[index]){
-        const key = keys[index];
-        obj[key] = data[index];
+    for (let key of keys){
+      const dataEl: string = data[keys.indexOf(key)];
+      if(data){
+        obj[key] = dataEl;
       }
     }
+    
     return obj;
 }
 
