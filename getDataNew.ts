@@ -4,7 +4,7 @@ const generateVinTabsObj = (keys: string[], data: string[]) => {
     const obj: {[key: string]:  string} = {};
     for (let key of keys){
       const dataEl: string = data[keys.indexOf(key)];
-      if(data){
+      if(dataEl){
         obj[key] = dataEl;
       }
     }
